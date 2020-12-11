@@ -113,7 +113,7 @@ public class ModifiedWMethodEQOracle<A extends UniversalDeterministicAutomaton<?
 			output = query.getOutput().toString();
 
 			// Detect closed connection to continue with queries with different prefixes
-			if (output.endsWith("ConnectionClosed") || output.endsWith("ConnectionClosedEOF") || output.endsWith("ConnectionClosedException")) {
+			if (output.contains("ConnectionClosed") || output.endsWith("ConnectionClosedEOF") || output.endsWith("ConnectionClosedException")) {
 				blacklist.add(trans);				
 				continue;
 			}
@@ -144,7 +144,7 @@ public class ModifiedWMethodEQOracle<A extends UniversalDeterministicAutomaton<?
 	
 					output = query.getOutput().toString();
 	
-					if (output.endsWith("ConnectionClosed") || output.endsWith("ConnectionClosedEOF") || output.endsWith("ConnectionClosedException")) {
+					if (output.contains("ConnectionClosed") || output.endsWith("ConnectionClosedEOF") || output.endsWith("ConnectionClosedException")) {
 						// Remember this prefix and ignore queries starting with this after this
 						blacklist.add(queryWord);
 						continue;
@@ -163,7 +163,7 @@ public class ModifiedWMethodEQOracle<A extends UniversalDeterministicAutomaton<?
 							return query;
 						
 						output = query.getOutput().toString();
-						if (output.endsWith("ConnectionClosed") || output.endsWith("ConnectionClosedEOF") || output.endsWith("ConnectionClosedException")) {
+						if (output.contains("ConnectionClosed") || output.endsWith("ConnectionClosedEOF") || output.endsWith("ConnectionClosedException")) {
 							// Remember this prefix and ignore queries starting with this after this
 							blacklist.add(queryWord);
 						}

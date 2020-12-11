@@ -40,7 +40,8 @@ public class SocketSUL implements StateLearnerSUL<String, String> {
 	public SocketSUL(SocketConfig config) throws Exception {
 		this.config = config;
 		ArrayList<String> commands = new ArrayList<>();
-		Arrays.stream(config.alphabet.split(" ")).forEach((String s) -> commands.add(s.replace("_", " ")));
+		// Arrays.stream(config.alphabet.split(" ")).forEach((String s) -> commands.add(s.replace("_", " ")));
+		commands.addAll(Arrays.asList(config.alphabet.split(" ")));
 		alphabet = new SimpleAlphabet<>(commands);
 
 		// Initialise test service
