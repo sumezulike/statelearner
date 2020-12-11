@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import net.automatalib.words.Word;
@@ -38,7 +39,9 @@ public class SocketSUL implements StateLearnerSUL<String, String> {
 
 	public SocketSUL(SocketConfig config) throws Exception {
 		this.config = config;
-		alphabet = new SimpleAlphabet<String>(Arrays.asList(config.alphabet.split(" ")));
+		ArrayList<String> commands = new ArrayList<>();
+		Arrays.stream(config.alphabet.split(" ")).forEach((String s) -> commands.add(s.replace("_", " ")));
+		alphabet = new SimpleAlphabet<>(commands);
 
 		// Initialise test service
 		socket = new Socket(config.hostname, config.port);
@@ -56,7 +59,7 @@ public class SocketSUL implements StateLearnerSUL<String, String> {
 		try {
 			// Process symbol and return result
 			// System.out.println("Sending symbol: " + symbol);
-			out.write(symbol + "\n");
+			out.write(symbol + "\r\n");
 			out.flush();
 
 			result = in.readLine();
