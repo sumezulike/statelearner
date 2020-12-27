@@ -60,6 +60,9 @@ public class SocketSUL implements StateLearnerSUL<String, String> {
 		try {
 			// Process symbol and return result
 			// System.out.println("Sending symbol: " + symbol);
+			if(symbol.contains("\r\n")) {
+				int x = 1;
+			}
 			out.write(symbol + "\r\n");
 			out.flush();
 

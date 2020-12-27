@@ -2,7 +2,7 @@
 
 StateLearner is a tool that can learn state machines from implementations using a black-box approach. It makes use of LearnLib for the learning specific algorithms.
 
-This tool can be used for TLS implementations, smart cards and can be extended using its socket module. 
+This fork is intended for use on mail servers
 
 An overview of different security protocols where state machine learning has been applied can be found [here](http://www.cs.ru.nl/~joeri/StateMachineInference.html).
 
